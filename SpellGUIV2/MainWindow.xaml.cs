@@ -390,6 +390,25 @@ namespace SpellEditor
                 procBoxes.Add(box);
             }
 
+            // custom procs
+            string[] customProcs = { " On Damage Blocked",
+            " On Critical Damage Done",
+            " On Critical Damage Taken",
+            " On Critical Healing Done",
+            " On Critical Healing Taken"};
+
+            foreach (string procString in customProcs)
+            {
+                ThreadSafeCheckBox box = new ThreadSafeCheckBox
+                {
+                    Content = procString,
+                    Margin = new Thickness(0, 5, 0, 0)
+                };
+
+                ProcEditorGrid.Children.Add(box);
+                procBoxes.Add(box);
+            }
+
             ApplyAuraName1.Items.Clear();
             ApplyAuraName2.Items.Clear();
             ApplyAuraName3.Items.Clear();
@@ -403,6 +422,30 @@ namespace SpellEditor
                 ApplyAuraName3.Items.Add(auraName);
                 FilterAuraCombo.Items.Add(auraName);
             }
+            // custom stuff. I dont know where those resources are
+
+            string[] customAuraNames = { "317 - SPELL_AURA_MOD_SPELL_DAMAGE_OF_ARMOR",
+            "318 - SPELL_AURA_MOD_BLOCK_VALUE_SCALING",
+            "319 - SPELL_AURA_MOD_WEAPON_SCHOOL_DAMAGE_EFFECT",
+            "320 - SPELL_AURA_PROC_ADD_DURATION",
+            "321 - SPELL_AURA_MOD_CRITICAL_BLOCK_PCT",
+            "322 - SPELL_AURA_MOD_SPELL_CHARGES",
+            "323 - SPELL_AURA_MOD_TRIGGER_SPELL_ON_STACKS_ON_SELF",
+            "324 - SPELL_AURA_MOD_TRIGGER_SPELL_ON_STACKS_ON_TARGET",
+            "325 - SPELL_AURA_MOD_DAMAGE_TAKEN_PCT_BEFORE_BLOCK",
+            "326 - SPELL_AURA_ADD_SPELL_BLOCK",
+            "327 - SPELL_AURA_MOD_TOGGLE_AURA_COMBAT_STATE"};
+
+            foreach (string customName in customAuraNames)
+            {
+                ApplyAuraName1.Items.Add(customName);
+                ApplyAuraName2.Items.Add(customName);
+                ApplyAuraName3.Items.Add(customName);
+                FilterAuraCombo.Items.Add(customName);
+            }
+
+            // end custom stuff
+
 
             SpellEffect1.Items.Clear();
             SpellEffect2.Items.Clear();
@@ -1338,6 +1381,9 @@ namespace SpellEditor
                             case 11: // Health Above 75%
                                 row["CasterAuraState"] = 23;
                                 break;
+                            case 12: // Power Below 50%
+                                row["CasterAuraState"] = 24;
+                                break;
                         }
                     }
 
@@ -2174,6 +2220,9 @@ namespace SpellEditor
                         break;
                     case 23: // Health Above 75%
                         CasterAuraState.ThreadSafeIndex = 11;
+                        break;
+                    case 24: // Power Below 50%
+                        CasterAuraState.ThreadSafeIndex = 12;
                         break;
                 }
 
