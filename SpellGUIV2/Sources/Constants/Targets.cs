@@ -131,5 +131,6 @@ namespace SpellEditor.Sources.Constants
         TARGET_GAMEOBJECT_CONE = 108,
         TARGET_UNUSED_109 = 109,
         TARGET_DEST_UNK_110 = 110, // 1 spell
+        TARGET_UNIT_CASTER_AREA_SUMMONS = 111,
     }
 }
