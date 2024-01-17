@@ -24,6 +24,9 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
 
+      - name: Restore nuget packages
+        run: nuget restore SpellGUIV2.sln
+
       - name: Build with MSBuild
         run: msbuild
 
