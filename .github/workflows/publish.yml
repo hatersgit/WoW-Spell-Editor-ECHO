@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    # To enable auto publishing to github, update your electron publisher
+    # config in package.json > "build" and remove the conditional below
+    # if: ${{ github.repository_owner == 'electron-react-boilerplate' }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-2019]
+
+    steps:
+      - name: Checkout git repo
+        uses: actions/checkout@v3
+
+      - name: Checkout StormLibSharp
+        uses: actions/checkout@v2
+        with:
+          repository: stoneharry/stormlibsharp
+          path: ./stormlibsharp
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Restore nuget packages
+        run: nuget restore SpellGUIV2.sln
+
+      - name: Build with MSBuild
+        run: msbuild
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GH_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Release"
+          files: |
+            ./SpellGUIV2/bin/Debug/*.exe
