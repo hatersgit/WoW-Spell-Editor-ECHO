@@ -25,7 +25,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
 
       - name: Build with MSBuild
-        run: msbuild YourSolution.sln /p:Configuration=Release /p:Platform="Any CPU"
+        run: msbuild
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
