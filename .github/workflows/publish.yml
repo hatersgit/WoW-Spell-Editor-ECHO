@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [windows-2019]
 
     steps:
       - name: Checkout git repo
@@ -26,11 +26,6 @@ jobs:
         with:
           repository: stoneharry/stormlibsharp
           path: ./stormlibsharp
-
-      - name: Download and Install .NET Framework 4.0 Developer Pack
-        run: |
-          curl -L -o netfx-4.0-devpack.exe https://download.microsoft.com/download/C/6/D/C6D0FD4E-9E53-4897-9B91-836EBA2AACD3/dotNetFx40_Full_x86_x64.exe
-          Start-Process -FilePath ".\netfx-4.0-devpack.exe" -ArgumentList "/q", "/norestart" -NoNewWindow -Wait
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
