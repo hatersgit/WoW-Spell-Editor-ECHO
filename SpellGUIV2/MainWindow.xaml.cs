@@ -416,15 +416,6 @@ namespace SpellEditor
             ApplyAuraName3.Items.Clear();
             FilterAuraCombo.Items.Clear();
 
-            string[] spell_aura_effect_names = SafeTryFindResource("spell_aura_effect_names").Split('|');
-            string[] comboEntries = new string[spell_aura_effect_names.Length];
-            for (int i = 0; i < spell_aura_effect_names.Length; ++i)
-            {
-                comboEntries[i] = i + " - " + spell_aura_effect_names[i];
-            }
-
-            // custom stuff. I dont know where those resources are
-
             string[] customAuraNames = { "317 - SPELL_AURA_MOD_SPELL_DAMAGE_OF_ARMOR",
             "318 - SPELL_AURA_MOD_BLOCK_VALUE_SCALING",
             "319 - SPELL_AURA_MOD_WEAPON_SCHOOL_DAMAGE_EFFECT",
@@ -435,29 +426,80 @@ namespace SpellEditor
             "324 - SPELL_AURA_MOD_TRIGGER_SPELL_ON_STACKS_ON_TARGET",
             "325 - SPELL_AURA_MOD_DAMAGE_TAKEN_PCT_BEFORE_BLOCK",
             "326 - SPELL_AURA_ADD_SPELL_BLOCK",
-            "327 - SPELL_AURA_MOD_TOGGLE_AURA_COMBAT_STATE"};
+            "327 - SPELL_AURA_MOD_TOGGLE_AURA_COMBAT_STATE",
+            "328 - SPELL_AURA_MOD_SPELL_POWER",
+            "329 - SPELL_AURA_MOD_SPELL_POWER_PCT",
+            "330 - SPELL_AURA_MOD_SPELL_POWER_OF_STAT_PERCENT",
+            "331 - SPELL_AURA_MOD_SPELL_POWER_OF_RATING_PERCENT",
+            "332 - SPELL_AURA_MOD_TRIGGER_SPELL_ON_POWER_PCT",
+            "333 - SPELL_AURA_MOD_RATING_PCT",
+            "334 - SPELL_AURA_MOD_RATING_OF_RATING_PCT",
+            "335 - SPELL_AURA_MOD_SCHOOL_MASK_DAMAGE_FROM_CASTER",
+            "336 - SPELL_AURA_MOD_AUTOATTACK_DAMAGE_PCT",
+            "337 - SPELL_AURA_MOD_SCHOOL_MASK_DAMAGE_VS_CASTER",
+            "338 - SPELL_AURA_AREA_TRIGGER",
+            "339 - SPELL_AURA_MOD_ARMOR_PENETRATION",
+            "340 - SPELL_AURA_KNOCKBACK_IMMUNITY",
+            "341 - SPELL_AURA_ADD_MASTERY_PCT_TO_SPELL_EFFECT ",
+            "342 - SPELL_AURA_MOD_RATING_FROM_ALL_SOURCES_BY_PCT",
+            "343 - SPELL_AURA_MOD_RECOVERY_RATE ",
+            "344 - SPELL_AURA_ADD_MASTERY_RATING_TO_SPELL_EFFECT",
+            "345 - SPELL_AURA_MOD_REMOVE_AURA",
+            "346 - SPELL_AURA_CAN_DOUBLE_JUMP",
+            "347 - SPELL_AURA_CAN_GLIDE",
+            "348 - SPELL_AURA_MOD_SCHOOL_MASK_HEALING_FROM_CASTER",
+            "349 - SPELL_AURA_MOD_MONEY_GAIN",
+            "350 - SPELL_AURA_MOD_TAXI_FLIGHT_SPEED",
+            "351 - SPELL_AURA_MOD_FORGE_STAT",
+            "352 - SPELL_AURA_MOD_RESTED_XP_MAX_AMOUNT",
+            "353 - SPELL_AURA_MOD_RESTED_XP_RECOVERY_RATE",
+            "354 - SPELL_AURA_MOD_CHANGE_DAMAGE_SCHOOL_OF_SPELL",
+            "355 - SPELL_AURA_PROC_TRIGGER_LEAP"};
 
-            foreach (string customName in customAuraNames)
+            string[] spell_aura_effect_names = SafeTryFindResource("spell_aura_effect_names").Split('|');
+            string[] comboEntries = new string[spell_aura_effect_names.Length+customAuraNames.Length];
+            for (int i = 0; i < spell_aura_effect_names.Length; ++i)
             {
-                ApplyAuraName1.Items.Add(customName);
-                ApplyAuraName2.Items.Add(customName);
-                ApplyAuraName3.Items.Add(customName);
-                FilterAuraCombo.Items.Add(customName);
+                comboEntries[i] = i + " - " + spell_aura_effect_names[i];
             }
-
-            // end custom stuff
+            int x = 0;
+            for (int i = spell_aura_effect_names.Length; i < comboEntries.Length; ++i)
+            {
+                comboEntries[i] = customAuraNames[x];
+                x++;
+            }
 
             ApplyAuraName1.ItemsSource = new List<string>(comboEntries);
             ApplyAuraName2.ItemsSource = new List<string>(comboEntries);
             ApplyAuraName3.ItemsSource = new List<string>(comboEntries);
             FilterAuraCombo.ItemsSource = new List<string>(comboEntries);
 
+            string[] customSpellNames = {
+                "165 - SPELL_EFFECT_LEARN_TRANSMOG_SET",
+                "166 - SPELL_EFFECT_CREATE_AREATRIGGER",
+                "167 - SPELL_EFFECT_JUMP_CHARGE",
+                "168 - SPELL_EFFECT_MODIFY_CURRENT_SPELL_COOLDOWN",
+                "169 - SPELL_EFFECT_REMOVE_CURRENT_SPELL_COOLDOWN",
+                "170 - SPELL_EFFECT_RESTORE_SPELL_CHARGE",
+                "171 - SPELL_EFFECT_GIVE_EXPERIENCE",
+                "172 - SPELL_EFFECT_GIVE_RESTED_EXPERIENCE_BONUS",
+                "173 - SPELL_EFFECT_GIVE_HONOR",
+                "174 - SPELL_EFFECT_RECEIVE_ITEM"
+            };
+
             string[] spell_effect_names = SafeTryFindResource("spell_effect_names").Split('|');
-            comboEntries = new string[spell_effect_names.Length];
+            comboEntries = new string[spell_effect_names.Length+customSpellNames.Length];
             for (int i = 0; i < spell_effect_names.Length; ++i)
             {
                 comboEntries[i] = i + " - " + spell_effect_names[i];
             }
+            x = 0;
+            for (int i = spell_effect_names.Length; i < comboEntries.Length; ++i)
+            {
+                comboEntries[i] = customSpellNames[x];
+                x++;
+            }
+
             SpellEffect1.ItemsSource = new List<string>(comboEntries);
             SpellEffect2.ItemsSource = new List<string>(comboEntries);
             SpellEffect3.ItemsSource = new List<string>(comboEntries);
