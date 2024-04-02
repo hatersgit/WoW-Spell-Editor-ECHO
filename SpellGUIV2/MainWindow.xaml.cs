@@ -308,6 +308,14 @@ namespace SpellEditor
             string[] caster_aura_state_strings = SafeTryFindResource("caster_aura_state_strings").Split('|');
             foreach (string casterAuraState in caster_aura_state_strings) { CasterAuraState.Items.Add(casterAuraState); }
 
+            // custom caster auras
+            string[] customCasterAuras = {
+                "Power Below 50%",
+                "Power Below 20%",
+                "Power Above 80%"
+            };
+            foreach (string casterAuraState in customCasterAuras) { CasterAuraState.Items.Add(casterAuraState); }
+
             TargetAuraState.Items.Clear();
             string[] target_aura_state_strings = SafeTryFindResource("target_aura_state_strings").Split('|');
             foreach (string targetAuraState in target_aura_state_strings) { TargetAuraState.Items.Add(targetAuraState); }
@@ -1452,6 +1460,12 @@ namespace SpellEditor
                             case 12: // Power Below 50%
                                 row["CasterAuraState"] = 24;
                                 break;
+                            case 13: // Power Below 20%
+                                row["CasterAuraState"] = 25;
+                                break;
+                            case 14: // Power above 80%
+                                row["CasterAuraState"] = 26;
+                                break;
                         }
                     }
 
@@ -2270,6 +2284,12 @@ namespace SpellEditor
                         break;
                     case 24: // Power Below 50%
                         CasterAuraState.ThreadSafeIndex = 12;
+                        break;
+                    case 25: // Power Below 50%
+                        CasterAuraState.ThreadSafeIndex = 13;
+                        break;
+                    case 26: // Power Below 50%
+                        CasterAuraState.ThreadSafeIndex = 14;
                         break;
                 }
 
