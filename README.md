@@ -23,7 +23,7 @@ https://www.youtube.com/watch?v=oM4AU0KMuw0
 
 The `spell.dbc` exists client side inside the MPQ files: `DBFilesClient/Spell.dbc`. You extract this file and use it server side too. The client uses it to display spell strings, and other client side requirements. The server side uses it to calculate damage, healing, spell effects, etc, and validating that the requests the clients are sending are valid.
 
-This means that if you wish to modify spells it is usually necessary to update both the client and the server. You can deploy a custom MPQ and if neccessary a custom wow.exe binary. There are plenty of guides for this out there, e.g: http://www.modcraft.io/index.php?board=78.0 / https://wowdev.wiki/Main_Page
+This means that if you wish to modify spells it is usually necessary to update both the client and the server. You can deploy a custom MPQ and if neccessary a custom wow.exe binary. There are plenty of guides for this out there.
 
 ----
 

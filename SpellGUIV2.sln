@@ -7,8 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellEditor", "SpellGUIV2\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SereniaBLPLib", "SereniaBLPLib\SereniaBLPLib.csproj", "{4ED9F877-A9BB-470F-B35C-694147472080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellVisualMapBuilder", "SpellVisualMapBuilder\SpellVisualMapBuilder.csproj", "{9D1FA8CF-3EA7-478B-A031-049598BD9054}"
-EndProject
+# Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellVisualMapBuilder", "SpellVisualMapBuilder\SpellVisualMapBuilder.csproj", "{9D1FA8CF-3EA7-478B-A031-049598BD9054}"
+# EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StormLibSharp", "stormlibsharp\src\StormLibSharp\StormLibSharp.csproj", "{D0139C61-6BA0-4F07-B1E8-551023CD2624}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadlessExport", "HeadlessExport\HeadlessExport.csproj", "{69BA445D-46BE-4B75-BA49-C7D3AC47A210}"
