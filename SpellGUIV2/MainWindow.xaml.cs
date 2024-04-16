@@ -441,16 +441,16 @@ namespace SpellEditor
             "331 - SPELL_AURA_MOD_SPELL_POWER_OF_RATING_PERCENT",
             "332 - SPELL_AURA_MOD_TRIGGER_SPELL_ON_POWER_PCT",
             "333 - SPELL_AURA_MOD_RATING_PCT",
-            "334 - SPELL_AURA_MOD_RATING_OF_RATING_PCT",
+            "334 - SPELL_AURA_MOD_RATING_OF_RATING_PERCENT",
             "335 - SPELL_AURA_MOD_SCHOOL_MASK_DAMAGE_FROM_CASTER",
             "336 - SPELL_AURA_MOD_AUTOATTACK_DAMAGE_PCT",
             "337 - SPELL_AURA_MOD_SCHOOL_MASK_DAMAGE_VS_CASTER",
             "338 - SPELL_AURA_AREA_TRIGGER",
             "339 - SPELL_AURA_MOD_ARMOR_PENETRATION",
             "340 - SPELL_AURA_KNOCKBACK_IMMUNITY",
-            "341 - SPELL_AURA_ADD_MASTERY_PCT_TO_SPELL_EFFECT ",
+            "341 - SPELL_AURA_ADD_MASTERY_PCT_TO_SPELL_EFFECT",
             "342 - SPELL_AURA_MOD_RATING_FROM_ALL_SOURCES_BY_PCT",
-            "343 - SPELL_AURA_MOD_RECOVERY_RATE ",
+            "343 - SPELL_AURA_MOD_RECOVERY_RATE",
             "344 - SPELL_AURA_ADD_MASTERY_RATING_TO_SPELL_EFFECT",
             "345 - SPELL_AURA_MOD_REMOVE_AURA",
             "346 - SPELL_AURA_CAN_DOUBLE_JUMP",
@@ -515,6 +515,27 @@ namespace SpellEditor
             SpellEffect3.ItemsSource = new List<string>(comboEntries);
             FilterSpellEffectCombo.ItemsSource = new List<string>(comboEntries);
 
+            // custom
+            string[] customEffectNames = { "165 - SPELL_EFFECT_LEARN_TRANSMOG_SET",
+            "166 - SPELL_EFFECT_CREATE_AREATRIGGER",
+            "167 - SPELL_EFFECT_JUMP_CHARGE",
+            "168 - SPELL_EFFECT_MODIFY_CURRENT_SPELL_COOLDOWN",
+            "169 - SPELL_EFFECT_REMOVE_CURRENT_SPELL_COOLDOWN",
+            "170 - SPELL_EFFECT_RESTORE_SPELL_CHARGE",
+            "171 - SPELL_EFFECT_GIVE_EXPERIENCE",
+            "172 - SPELL_EFFECT_GIVE_RESTED_EXPERIENCE_BONUS",
+            "173 - SPELL_EFFECT_GIVE_HONOR",
+            "174 - SPELL_EFFECT_RECEIVE_ITEM", };
+
+            foreach (string customEffect in customEffectNames)
+            {
+                SpellEffect1.Items.Add(customEffect);
+                SpellEffect2.Items.Add(customEffect);
+                SpellEffect3.Items.Add(customEffect);
+                FilterSpellEffectCombo.Items.Add(customEffect);
+            }
+            // custom end
+            
             Mechanic1.Items.Clear();
             Mechanic2.Items.Clear();
             Mechanic3.Items.Clear();
