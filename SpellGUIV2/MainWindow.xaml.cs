@@ -464,7 +464,8 @@ namespace SpellEditor
             "354 - SPELL_AURA_MOD_CHANGE_DAMAGE_SCHOOL_OF_SPELL",
             "355 - SPELL_AURA_PROC_TRIGGER_LEAP",
             "356 - SPELL_AURA_PROC_MANASTEAL",
-            "358 - SPELL_AURA_MOD_MECHANIC_CRIT_CHANCE"};
+            "357 - SPELL_AURA_PROC_TRIGGER_RIPPLE_OF_TRIGGER",
+            "358 - SPELL_AURA_PROC_TRIGGER_COPY_OF_TRIGGER"};
 
             string[] spell_aura_effect_names = SafeTryFindResource("spell_aura_effect_names").Split('|');
             string[] comboEntries = new string[spell_aura_effect_names.Length+customAuraNames.Length];
@@ -515,27 +516,6 @@ namespace SpellEditor
             SpellEffect3.ItemsSource = new List<string>(comboEntries);
             FilterSpellEffectCombo.ItemsSource = new List<string>(comboEntries);
 
-            // custom
-            string[] customEffectNames = { "165 - SPELL_EFFECT_LEARN_TRANSMOG_SET",
-            "166 - SPELL_EFFECT_CREATE_AREATRIGGER",
-            "167 - SPELL_EFFECT_JUMP_CHARGE",
-            "168 - SPELL_EFFECT_MODIFY_CURRENT_SPELL_COOLDOWN",
-            "169 - SPELL_EFFECT_REMOVE_CURRENT_SPELL_COOLDOWN",
-            "170 - SPELL_EFFECT_RESTORE_SPELL_CHARGE",
-            "171 - SPELL_EFFECT_GIVE_EXPERIENCE",
-            "172 - SPELL_EFFECT_GIVE_RESTED_EXPERIENCE_BONUS",
-            "173 - SPELL_EFFECT_GIVE_HONOR",
-            "174 - SPELL_EFFECT_RECEIVE_ITEM", };
-
-            foreach (string customEffect in customEffectNames)
-            {
-                SpellEffect1.Items.Add(customEffect);
-                SpellEffect2.Items.Add(customEffect);
-                SpellEffect3.Items.Add(customEffect);
-                FilterSpellEffectCombo.Items.Add(customEffect);
-            }
-            // custom end
-            
             Mechanic1.Items.Clear();
             Mechanic2.Items.Clear();
             Mechanic3.Items.Clear();
